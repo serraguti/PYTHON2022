@@ -1,8 +1,10 @@
 import python27metodosnarcistas
+import datetime
 
 print("Ejemplo narcisista y bisiesto")
 print("1.- Bisiesto")
 print("2.- Narcisista")
+print("3.- Años bisiestos año nacimiento")
 print("Seleccione una opción")
 print("---------------------")
 opcion = int(input())
@@ -22,6 +24,17 @@ elif (opcion == 2):
         print("Es un número narcisista")
     else:
         print("Lo siento, su número NO es narcisista")
+elif (opcion == 3):
+    print("Introduce Año de nacimiento")
+    anyoNacimiento = int(input())
+    # Vamos a capturar la fecha actual (hoy)
+    fechaActual = datetime.date.today()
+    # Necesitamos extraer el año de la fecha actual
+    anyoActual = int(fechaActual.year)
+    print(anyoActual)
+    for i in range(anyoNacimiento, anyoActual + 1):
+        if (python27metodosnarcistas.isBisiesto(i)):
+            print(i)
 else:
     print("Opción incorrecta")
 print("Fin de programa")
