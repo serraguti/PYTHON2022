@@ -37,4 +37,6 @@ elif (opcion == 3):
             print(i)
 else:
     print("Opción incorrecta")
+print("Pulse una tecla para cerrar...")
+input()
 print("Fin de programa")
