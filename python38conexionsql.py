@@ -14,6 +14,7 @@ cadenaconexion=("DRIVER={ODBC Driver 17 for SQL Server};SERVER=" + servidor
 try:
     print("Intentando conectar...")
     conexion = pyodbc.connect(cadenaconexion)
+    #conexion = pyodbc.connect('DRIVER={/user/local/lib/libmsodbcsql.17.dylib};SERVER=sqleoi.database.windows.net,1433;DATABASE=AZUREALUMNOS;UID=adminsql;PWD=Admin123')
     print("Conectado!!!")
 except pyodbc.InterfaceError:
     print("Buff, esto no va bien")
