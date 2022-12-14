@@ -1,10 +1,11 @@
 from conexion45departamentos import ConexionDepartamentos
-
+from class45departamento import Departamento
 connection = ConexionDepartamentos()
 print("Clase acceso a datos Departamentos")
 print("1.- Insertar departamento")
 print("2.- Modificar departamento")
 print("3.- Eliminar departamento")
+print("4.- Buscar departamento")
 print("Seleccione una opción")
 opcion = int(input())
 if (opcion == 1):
@@ -30,6 +31,14 @@ elif (opcion == 3):
     numero = input()
     respuesta = connection.eliminarDepartamento(numero)
     print("Departamentos eliminados: " + str(respuesta))
+elif (opcion == 4):
+    print("Introduzca ID a buscar")
+    numero = input()
+    dept = connection.buscarDepartamento(numero)
+    if (not dept):
+        print("No existe departamento")
+    else:
+        print(dept.nombre + ", " + dept.localidad)
 else:
     print("Opción incorrecta")
 print("Fin de programa")

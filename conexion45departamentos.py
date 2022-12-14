@@ -1,4 +1,6 @@
 import pyodbc
+from class45departamento import Departamento
+
 servidor = "LOCALHOST"
 bbdd = "HOSPITAL"
 usuario = "SA"
@@ -39,3 +41,21 @@ class ConexionDepartamentos:
         cursor.commit()
         cursor.close()
         return filasModificadas
+
+    def buscarDepartamento(self, numero):
+        cursor = self.conexion.cursor()
+        sql = "SELECT * FROM DEPT WHERE DEPT_NO=?"
+        cursor.execute(sql, (numero))
+        row = cursor.fetchone()
+        if (not row):
+            cursor.close()
+            # DEVOLVEMOS UN NULO
+            return None
+        else:
+            # SI EXISTE UN DEPARTAMENTO
+            # CREAMOS UNA NUEVA CLASE Departamento
+            dept = Departamento()
+            dept.numero = row.DEPT_NO
+            dept.nombre = row.DNOMBRE
+            dept.localidad = row.LOC
+            return dept
