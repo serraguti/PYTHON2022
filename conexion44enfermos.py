@@ -1,5 +1,5 @@
 import pyodbc
-servidor = "LOCALHOST\LOCALHOST"
+servidor = "LOCALHOST"
 bbdd = "HOSPITAL"
 usuario = "SA"
 password = ""
