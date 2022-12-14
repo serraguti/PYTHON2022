@@ -17,7 +17,11 @@ print("Introduzca nombre de departamento")
 nombre = input()
 print("Introduzca localidad")
 localidad = input()
-sql = "insert into dept values (66, 'PYTHON', 'ALMERIA')"
+# DEBEMOS CONCATENAR LOS VALORES.  LO MAS COMODO ES IR 
+# SIGUIENDO UNA CONSULTA YA REALIZADA
+# "insert into dept values (66, 'PYTHON', 'ALMERIA')"
+sql = "insert into dept values(" + numero + ", '" + nombre + "', '" + localidad + "')"
+print(sql)
 # DECLARAMOS NUESTRO CURSOR
 cursor = conexion.cursor()
 # EJECUTAMOS LA CONSULTA SOBRE EL CURSOR
@@ -35,6 +39,21 @@ print("Rowcount: " + str(filasInsertadas))
 cursor.commit()
 # CON ROLLBACK LE INDICAMOS QUE DESHAGA LOS CAMBIOS
 # cursor.rollback()
+cursor.close()
+# LOS CURSORES SE PUEDEN REUTILZAR PARA DIFERENTES CONSULTAS
+# VAMOS A REUTILIZAR ESTA MISMA VARIABLE A CONTINUACION 
+# PARA UNA CONSULTA DE SELECCION
+# COMO NECESITAMOS LA CONEXION ABIERTA, NO CERRAMOS LA CONEXION
+sqlselect = "SELECT * FROM DEPT"
+# VOLVEMOS A CARGAR EL CURSOR DE NUEVO PARA LA 
+# SIGUIENTE CONSULTA
+cursor = conexion.cursor()
+# EJECUTAMOS LA CONSULTA SELECT
+cursor.execute(sqlselect)
+print("--------------Departamentos----------------")
+for row in cursor:
+    print(row.DNOMBRE + ", " + row.LOC)
+# CERRAMOS EL CURSOR
 cursor.close()
 conexion.close()
 print("Fin de programa")
