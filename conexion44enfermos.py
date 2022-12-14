@@ -1,5 +1,5 @@
 import pyodbc
-servidor = "LOCALHOST"
+servidor = "LOCALHOST\LOCALHOST"
 bbdd = "HOSPITAL"
 usuario = "SA"
 password = ""
@@ -12,8 +12,7 @@ class ConexionEnfermos:
         # self ES LA CLASE EN LA QUE ESTAMOS TRABAJANDO
         # Y NOS VAMOS A CREAR UNA PROPIEDAD PARA 
         # TENER LA CONEXION
-        connectionString = "DRIVER={ODBC Driver 17 for SQL Server}; SERVER="
-        + servidor + "; DATABASE=" + bbdd + "; UID=" + usuario + "; PWD=" + password
+        connectionString = "DRIVER={ODBC Driver 17 for SQL Server}; SERVER=" + servidor + "; DATABASE=" + bbdd + "; UID=" + usuario + "; PWD=" + password
         # CREAMOS UNA PROPIEDAD LLAMADA conexion
         self.conexion = pyodbc.connect(connectionString)
     # TENDREMOS UN METODO PARA ELIMINAR UN ENFERMO
