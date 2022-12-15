@@ -59,3 +59,24 @@ class ConexionDepartamentos:
             dept.nombre = row.DNOMBRE
             dept.localidad = row.LOC
             return dept
+
+    def getDepartamentos(self):
+        cursor = self.conexion.cursor()
+        sql = "SELECT * FROM DEPT"
+        cursor.execute(sql)
+        # CREAMOS LA LISTA/COLECCION PARA
+        # GUARDAR Y DEVOLVER TODOS LOS DEPARTAMENTOS
+        departamentos = []
+        for row in cursor:
+            # CREAMOS UN OBJETO DEPARTAMENTO POR CADA
+            # VUELTA DE BUCLE
+            dept = Departamento()
+            # ASIGNAMOS LAS PROPIEDADES AL NUEVO OBJETO
+            # dept CON LO QUE ESTAMOS LEYENDO DE LA BBDD
+            dept.numero = row.DEPT_NO
+            dept.nombre = row.DNOMBRE
+            dept.localidad = row.LOC
+            # AÑADIMOS A LA LISTA CADA OBJETO DEPARTAMENTO
+            departamentos.append(dept)
+        cursor.close()
+        return departamentos

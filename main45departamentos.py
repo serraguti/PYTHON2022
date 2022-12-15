@@ -6,6 +6,7 @@ print("1.- Insertar departamento")
 print("2.- Modificar departamento")
 print("3.- Eliminar departamento")
 print("4.- Buscar departamento")
+print("5.- Mostrar todos los departamentos")
 print("Seleccione una opción")
 opcion = int(input())
 if (opcion == 1):
@@ -38,6 +39,10 @@ elif (opcion == 4):
     if (not dept):
         print("No existe departamento")
     else:
+        print(dept.nombre + ", " + dept.localidad)
+elif (opcion == 5):
+    departamentos = connection.getDepartamentos()
+    for dept in departamentos:
         print(dept.nombre + ", " + dept.localidad)
 else:
     print("Opción incorrecta")
